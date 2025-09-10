@@ -12,12 +12,12 @@ import {
   Sun,
   UserPlus,
 } from "lucide-react";
-import { Menu } from "@headlessui/react"; // Using Headless UI's Menu components
-import { ChevronDownIcon } from "@heroicons/react/20/solid"; // Import Chevron icon
-import { EllipsisVerticalIcon } from "@heroicons/react/20/solid"; // Import ellipsis icon
+import { Menu } from "@headlessui/react"; 
+import { ChevronDownIcon } from "@heroicons/react/20/solid"; 
+import { EllipsisVerticalIcon } from "@heroicons/react/20/solid"; 
 
 function UserHeader({ cartCount, user, darkMode, setDarkMode }) {
-  // Toggle Dark Mode
+  
   const toggleDarkMode = () => {
     setDarkMode((prevMode) => !prevMode);
   };
@@ -180,7 +180,7 @@ function UserHeader({ cartCount, user, darkMode, setDarkMode }) {
               <div className="py-1">
                 <Menu.Item>
                   <a
-                    href="http://localhost:2000"
+                    href="https://seller.kingcart.shop"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full"
