@@ -74,7 +74,7 @@ const PlaceOrderForm = ({
     const code = couponInput.trim().toUpperCase();
     if (!code) return;
 
-    // Check if the coupon is already applied
+   
     if (appliedCoupon && appliedCoupon.code === code) {
       setCouponMessage("Coupon already applied.");
       return;
@@ -91,7 +91,7 @@ const PlaceOrderForm = ({
       if (response.data.status) {
         const newCoupon = response.data.coupon;
 
-        // Apply new coupon and update total
+     
         const newTotal = Math.max(0, originalTotal - newCoupon.discount);
 
         setAppliedCoupon(newCoupon);
@@ -128,10 +128,10 @@ const PlaceOrderForm = ({
     }
 
     if (paymentMethod === "COD") {
-      // Your existing COD logic
+     
       placeCODOrder();
     } else {
-      // Online Payment
+      
       try {
         setLoading(true);
         const { data: order } = await axios.post(
@@ -141,7 +141,7 @@ const PlaceOrderForm = ({
         );
 
         const options = {
-          key: "rzp_test_X9b2LOCu4sLwHX", // Replace with your Razorpay key
+          key: "rzp_test_X9b2LOCu4sLwHX", 
           amount: order.amount,
           currency: order.currency,
           name: "King Cart",

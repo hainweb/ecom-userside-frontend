@@ -1,6 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Moon, Sun, Tag, X, Search, Filter, ChevronLeft, ShoppingCart, LogIn, LogOut, UserPlus } from "lucide-react";
+import {
+  Moon,
+  Sun,
+  Tag,
+  X,
+  Search,
+  Filter,
+  ChevronLeft,
+  ShoppingCart,
+  LogIn,
+  LogOut,
+  UserPlus,
+} from "lucide-react";
 import { Menu, MenuButton } from "@headlessui/react";
 import { EllipsisVerticalIcon } from "@heroicons/react/20/solid";
 import axios from "axios";
@@ -13,13 +25,11 @@ function UserHeader({ cartCount, user, setDarkMode, darkMode }) {
 
   const [loading, setLoading] = useState(false);
 
-  // Filter and Sort States
   const [categorySearch, setCategorySearch] = useState("");
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [priceRange, setPriceRange] = useState({ min: "", max: "" });
   const [sortBy, setSortBy] = useState("");
 
-  // Available categories (will be populated from products)
   const [availableCategories, setAvailableCategories] = useState([]);
 
   const toggleDarkMode = () => {
@@ -131,25 +141,23 @@ function UserHeader({ cartCount, user, setDarkMode, darkMode }) {
           </Link>
 
           <ul className="hidden sm:flex navbar-nav space-x-4 md:space-x-8">
-              
-                       <li>
-                         <Link
-                           className={`text-lg hover:text-blue-600 transition duration-300 ${
-                             darkMode ? "text-white" : "text-gray-700"
-                           }`}
-                           to="/cart"
-                         >
-                           <div className="relative">
-                             <ShoppingCart color={darkMode ? "#ffffff" : "#0d0d0d"} />
-                             {cartCount > 0 && (
-                               <span className="absolute -top-2 -right-2 bg-blue-600 text-white rounded-full px-1 text-xs">
-                                 {cartCount}
-                               </span>
-                             )}
-                           </div>
-                         </Link>
-                       </li>
-                     
+            <li>
+              <Link
+                className={`text-lg hover:text-blue-600 transition duration-300 ${
+                  darkMode ? "text-white" : "text-gray-700"
+                }`}
+                to="/cart"
+              >
+                <div className="relative">
+                  <ShoppingCart color={darkMode ? "#ffffff" : "#0d0d0d"} />
+                  {cartCount > 0 && (
+                    <span className="absolute -top-2 -right-2 bg-blue-600 text-white rounded-full px-1 text-xs">
+                      {cartCount}
+                    </span>
+                  )}
+                </div>
+              </Link>
+            </li>
           </ul>
 
           <div className="hidden md:flex w-2/3 mx-8">
@@ -187,21 +195,21 @@ function UserHeader({ cartCount, user, setDarkMode, darkMode }) {
                 </MenuButton>
               </div>
 
-               <Menu.Items
-                           className={`absolute right-0 z-[60] mt-2 w-48 origin-top-right rounded-md shadow-lg ring-1 ring-black/5 focus:outline-none ${
-                             darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-900"
-                           }`}
-                         >
-                           <div className="py-1">
-                             <Menu.Item>
-                               <a
-                                 href="http://localhost:2000"
-                                 target="_blank"
-                                 rel="noopener noreferrer"
-                                 className="w-full"
-                               >
-                                 <button
-                                   className={`
+              <Menu.Items
+                className={`absolute right-0 z-[60] mt-2 w-48 origin-top-right rounded-md shadow-lg ring-1 ring-black/5 focus:outline-none ${
+                  darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-900"
+                }`}
+              >
+                <div className="py-1">
+                  <Menu.Item>
+                    <a
+                      href="http://localhost:2000"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full"
+                    >
+                      <button
+                        className={`
                      w-full flex items-center justify-center space-x-2
                      px-6 py-3 rounded-2xl shadow-lg
                      transition-transform duration-200 ease-out
@@ -209,48 +217,48 @@ function UserHeader({ cartCount, user, setDarkMode, darkMode }) {
                      font-semibold
                       bg-gradient-to-r from-gray-500 via-gray-700 to-blue-600 text-white
                    `}
-                                 >
-                                   <UserPlus className="w-5 h-5" />
-                                   <span>Become a Seller</span>
-                                 </button>
-                               </a>
-                             </Menu.Item>
-             
-                             <Menu.Item>
-                               {({ active }) =>
-                                 user ? (
-                                   <Link to="/logout">
-                                     <button
-                                       className={`mt-2 px-4 py-2 flex text-sm w-full text-left rounded-md transition-colors duration-200 ease-in-out ${
-                                         active
-                                           ? darkMode
-                                             ? "bg-gray-800 text-white hover:bg-red-100 hover:text-red-600 font-bold"
-                                             : "bg-gray-900 text-white hover:bg-red-100 hover:text-red-600 font-bold"
-                                           : ""
-                                       }`}
-                                     >
-                                       <LogOut size={18} className="mr-1" /> Logout
-                                     </button>
-                                   </Link>
-                                 ) : (
-                                   <Link to="/login">
-                                     <button
-                                       className={`block px-4 py-2 flex text-sm w-full text-left rounded-md transition-colors duration-200 ease-in-out ${
-                                         active
-                                           ? darkMode
-                                             ? "bg-gray-800 text-white hover:bg-blue-200 hover:text-blue-600 font-bold"
-                                             : "bg-gray-900 text-white hover:bg-blue-200 hover:text-blue-600 font-bold"
-                                           : ""
-                                       }`}
-                                     >
-                                       <LogIn size={18} className="mr-1" /> Login
-                                     </button>
-                                   </Link>
-                                 )
-                               }
-                             </Menu.Item>
-                           </div>
-                         </Menu.Items>
+                      >
+                        <UserPlus className="w-5 h-5" />
+                        <span>Become a Seller</span>
+                      </button>
+                    </a>
+                  </Menu.Item>
+
+                  <Menu.Item>
+                    {({ active }) =>
+                      user ? (
+                        <Link to="/logout">
+                          <button
+                            className={`mt-2 px-4 py-2 flex text-sm w-full text-left rounded-md transition-colors duration-200 ease-in-out ${
+                              active
+                                ? darkMode
+                                  ? "bg-gray-800 text-white hover:bg-red-100 hover:text-red-600 font-bold"
+                                  : "bg-gray-900 text-white hover:bg-red-100 hover:text-red-600 font-bold"
+                                : ""
+                            }`}
+                          >
+                            <LogOut size={18} className="mr-1" /> Logout
+                          </button>
+                        </Link>
+                      ) : (
+                        <Link to="/login">
+                          <button
+                            className={`block px-4 py-2 flex text-sm w-full text-left rounded-md transition-colors duration-200 ease-in-out ${
+                              active
+                                ? darkMode
+                                  ? "bg-gray-800 text-white hover:bg-blue-200 hover:text-blue-600 font-bold"
+                                  : "bg-gray-900 text-white hover:bg-blue-200 hover:text-blue-600 font-bold"
+                                : ""
+                            }`}
+                          >
+                            <LogIn size={18} className="mr-1" /> Login
+                          </button>
+                        </Link>
+                      )
+                    }
+                  </Menu.Item>
+                </div>
+              </Menu.Items>
             </Menu>
           </div>
         </nav>

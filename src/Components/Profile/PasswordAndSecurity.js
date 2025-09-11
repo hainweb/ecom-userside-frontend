@@ -21,9 +21,9 @@ const PasswordAndSecurity = ({ setView }) => {
   ];
 
   const handleItemClick = (e, link, action) => {
-    e.preventDefault(); // Prevent default anchor behavior
-    if (action) action(); // Call the action (e.g., disabling 2FA)
-    setView(link);  // Trigger the view change with the link passed to it
+    e.preventDefault(); 
+    if (action) action(); 
+    setView(link);  
   };
 
   const disableTwoFactor = () => {

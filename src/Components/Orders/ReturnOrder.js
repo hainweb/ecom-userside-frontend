@@ -25,9 +25,9 @@ const ReturnOrder = () => {
 
     const handleReasonChange = (reason) => {
         setSelectedReason(reason);
-        setError(""); // Clear error on selecting a reason
+        setError("");
         if (reason !== "Other") {
-            setMessage(""); // Clear message if not "Other"
+            setMessage(""); 
         }
     };
 
@@ -50,7 +50,7 @@ const ReturnOrder = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!validateForm()) {
-            return; // Prevent form submission if validation fails
+            return; 
         }
 
         const returndata = {

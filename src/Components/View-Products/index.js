@@ -23,11 +23,9 @@ const ProductAndCategoryList = ({ setCartCount, user, setUser }) => {
   const [alreadycartproduct, setAlreadycartproduct] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Login modal states
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [pendingAction, setPendingAction] = useState(null);
 
-  // Fetch Categories
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -43,7 +41,6 @@ const ProductAndCategoryList = ({ setCartCount, user, setUser }) => {
     fetchCategories();
   }, []);
 
-  // Fetch Products
   useEffect(() => {
     const fetchSuggestedProducts = async () => {
       setLoadingProducts(true);
@@ -63,7 +60,6 @@ const ProductAndCategoryList = ({ setCartCount, user, setUser }) => {
     fetchSuggestedProducts();
   }, []);
 
-  // Handle protected actions (cart/wishlist)
   const handleProtectedAction = (action) => {
     if (user) {
       action();
@@ -73,13 +69,11 @@ const ProductAndCategoryList = ({ setCartCount, user, setUser }) => {
     }
   };
 
-  // Handle successful login
   const handleLoginSuccess = () => {
     if (pendingAction) {
       pendingAction();
       setPendingAction(null);
     }
-    // Refresh user data after login
   };
 
   const toggleWishlist = useCallback(
@@ -97,7 +91,6 @@ const ProductAndCategoryList = ({ setCartCount, user, setUser }) => {
             console.log("res wish", response);
 
             if (response.data.status) {
-              // Toggle the wishlist state for the product
               setSuggestedProducts((prevProducts) =>
                 prevProducts.map((product) =>
                   product._id === productId

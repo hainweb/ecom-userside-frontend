@@ -72,7 +72,7 @@ const Login = ({ setUser, setCartCount }) => {
       ...prev,
       [name]: value,
     }));
-    // Clear error when user starts typing
+   
     setErrors(prev => ({
       ...prev,
       [name]: '',

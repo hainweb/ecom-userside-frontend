@@ -19,10 +19,9 @@ function ExploreMore({ searchQuery }) {
         let data = response.data.products;
         console.log("Fetched products:", response);
 
-        // Shuffle the products
         data = data.sort(() => Math.random() - 0.5);
-        setAllProducts(data); // Store all products
-        setProducts(data.slice(0, visibleCount)); // Initially show 8 products
+        setAllProducts(data); 
+        setProducts(data.slice(0, visibleCount)); 
       } catch (err) {
         setError("Failed to load products");
       } finally {
@@ -33,20 +32,6 @@ function ExploreMore({ searchQuery }) {
     fetchProducts();
   }, []);
 
-/*   useEffect(() => {
-    if (searchQuery) {
-      const filteredProducts = allProducts.filter(
-        (product) =>
-          product.Name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          product.Description.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-      setProducts(filteredProducts.slice(0, visibleCount)); // Show filtered products
-    } else {
-      setProducts(allProducts.slice(0, visibleCount)); // Reset to all products
-    }
-  }, [searchQuery, allProducts, visibleCount]);
- */
- 
 
   const truncateText = (text, length) => {
     return text.length > length ? `${text.substring(0, length)}...` : text;

@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="bg-gray-800 dark:bg-gray-900 text-white py-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {/* Column 1: About Us */}
+        
           <div>
             <h3 className="text-lg font-semibold mb-4">About Us</h3>
             <p className="text-sm">
@@ -15,7 +15,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Column 2: Customer Service */}
+         
           <div>
             <h3 className="text-lg font-semibold mb-4">Customer Service</h3>
             <ul className="text-sm">
@@ -26,7 +26,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 3: Quick Links */}
+         
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="text-sm">
@@ -37,7 +37,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 4: Social Media */}
+       
           <div>
             <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
@@ -57,7 +57,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Footer */}
+      
         <div className="mt-8 border-t border-gray-700 pt-4 text-center">
           <p className="text-sm">&copy; 2025 King Cart. All rights reserved.</p>
         </div>

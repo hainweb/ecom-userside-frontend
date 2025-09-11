@@ -36,7 +36,7 @@ const Signup = ({ setUser, setCartCount }) => {
     return () => clearInterval(timer);
   }, [resendCooldown]);
 
-  // Show notification for 3 seconds
+  
   const showNotification = (message, type = "success") => {
     setNotification({ show: true, message, type });
     setTimeout(() => {
@@ -44,7 +44,7 @@ const Signup = ({ setUser, setCartCount }) => {
     }, 300000);
   };
 
-  // Rest of the existing helper functions...
+  
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -161,20 +161,20 @@ const Signup = ({ setUser, setCartCount }) => {
           setUser(response.data.user);
           setCartCount(0);
           navigate("/");
-        }, 1500); // Wait for notification to be visible before redirect
+        }, 1500); 
       } else {
-        // Show error notification instead of setting info
+       
         setNotification({ show: true, message: response.data.message, type: "error" });
 
 
-        setOtp(""); // Clear OTP input on error
+        setOtp(""); 
       }
     } catch (error) {
       showNotification(
         error.response?.data?.message || "Something went wrong. Please try again.",
         "error"
       );
-      setOtp(""); // Clear OTP input on error
+      setOtp(""); 
     } finally {
       setLoading(false);
     }
@@ -254,7 +254,7 @@ const Signup = ({ setUser, setCartCount }) => {
           </p>
         </div>
 
-        {/* Form sections remain the same but with dark mode classes added */}
+        {/* Form sections*/}
         {step === 1 && (
           <form onSubmit={handleNext} className="space-y-4">
             <div className="relative">

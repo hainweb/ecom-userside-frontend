@@ -17,7 +17,7 @@ function BestOfElectronic() {
         setLoading(true);
         const response = await axios.get(`${BASE_URL}/find-category-Mobile`);
         let data = response.data;
-        // Shuffle and limit to 8 products
+       
         data = data.sort(() => Math.random() - 0.5).slice(0, 8);
         setProducts(data);
       } catch (err) {

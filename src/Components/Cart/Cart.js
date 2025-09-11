@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { BASE_URL } from '../Urls/Urls';
 import {
-  Trash2,
   Plus,
   Minus,
   ShoppingBag,

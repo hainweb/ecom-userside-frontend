@@ -99,11 +99,11 @@ const ProductDisplay = ({ setCartCount }) => {
   };
 
   const addToWishlist = () => {
-    // Toggle the current state
+  
     const newWishlistedState = !isWishlisted;
     setIsWishlisted(newWishlistedState);
 
-    // Send the request to the server
+   
     axios
       .get(`${BASE_URL}/add-to-Wishlist/${product._id}`, {
         withCredentials: true,
@@ -111,12 +111,12 @@ const ProductDisplay = ({ setCartCount }) => {
       .then((response) => {
         console.log("res wish", response);
         if (!response.data.status) {
-          // Revert the state if the server response is unsuccessful
+         
           setIsWishlisted(!newWishlistedState);
         }
       })
       .catch(() => {
-        // Handle any errors by reverting the state
+        
         setIsWishlisted(!newWishlistedState);
       });
   };
@@ -125,10 +125,10 @@ const ProductDisplay = ({ setCartCount }) => {
     setNotificationMessage("Proceeding to checkout...");
     setShowNotification(true);
 
-    // Simulate notification timeout
+   
     setTimeout(() => setShowNotification(false), 3000);
 
-    // Navigate to the place-order page with state
+    
     navigate("/place-order", { state: { proId } });
   };
 
@@ -167,7 +167,7 @@ const ProductDisplay = ({ setCartCount }) => {
         console.error("Error sharing:", error);
       }
     } else {
-      // Fallback for browsers that do not support the Web Share API
+     
       alert(
         "System sharing is not supported on this browser. Please copy the link manually."
       );
@@ -350,7 +350,7 @@ const ProductDisplay = ({ setCartCount }) => {
               <button
                 onClick={() => handleAddToCart(product._id)}
                 className="h-12 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 border-2 border-gray-200 dark:border-gray-700"
-                disabled={product.Quantity === 0} // Disable if stock is out
+                disabled={product.Quantity === 0} 
               >
                 <ShoppingCart className="w-6 h-6" />
                 {product.Quantity === 0 ? "Stock Out" : "Add to Cart"}
@@ -363,10 +363,10 @@ const ProductDisplay = ({ setCartCount }) => {
                     ? "bg-red-600 hover:bg-red-700"
                     : "bg-blue-600 hover:bg-blue-700"
                 }`}
-                disabled={product.Quantity === 0} // Disable if stock is out
+                disabled={product.Quantity === 0} 
               >
                 {product.Quantity === 0 ? (
-                  <CircleOff className="w-6 h-6" /> // Use the appropriate "wrong" icon component
+                  <CircleOff className="w-6 h-6" /> 
                 ) : (
                   <Check className="w-6 h-6" />
                 )}

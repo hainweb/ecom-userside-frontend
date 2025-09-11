@@ -23,20 +23,20 @@ const HelpCenter = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
+    e.preventDefault(); 
     if (!formData.name || !formData.email || !formData.message) {
       setSubmissionStatus('All fields are required!');
-      return; // Ensure all fields are filled
+      return; 
     }
 
     setIsSubmitting(true);
     try {
-      const response = await axios.post(`${BASE_URL}/contact-form`, formData); // Adjust the endpoint as needed
+      const response = await axios.post(`${BASE_URL}/contact-form`, formData); 
       if(response.data.status){
       alert('Message sent successfully!');
       setIsContactFormVisible(false)
        
-      setFormData({ name: '', email: '', message: '' }); // Clear the form after submission
+      setFormData({ name: '', email: '', message: '' }); 
       }
     } catch (error) {
       setSubmissionStatus('Failed to send message. Please try again later.');

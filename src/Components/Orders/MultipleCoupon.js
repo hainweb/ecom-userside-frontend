@@ -82,7 +82,7 @@ const PlaceOrderForm = ({
     const code = couponInput.trim().toUpperCase();
     if (!code) return;
 
-    // Check if the coupon is already applied
+  
     const alreadyApplied = appliedCoupons.some(
       (coupon) => coupon.code === code
     );
@@ -102,7 +102,7 @@ const PlaceOrderForm = ({
       if (response.data.status) {
         const newCoupon = response.data.coupon;
 
-        // Apply new coupon and update total based on all discounts
+       
         const updatedCoupons = [...appliedCoupons, newCoupon];
         const totalDiscount = updatedCoupons.reduce(
           (acc, c) => acc + c.discount,

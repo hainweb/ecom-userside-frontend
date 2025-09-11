@@ -5,7 +5,7 @@ import { BASE_URL } from "../Urls/Urls";
 const Coupons = () => {
   const [coupons, setCoupons] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState('all'); // all, active, expired, used
+  const [filter, setFilter] = useState('all'); 
   
   useEffect(() => {
     const fetchCoupons = async () => {
@@ -26,7 +26,7 @@ const Coupons = () => {
 
   const copyToClipboard = (code) => {
     navigator.clipboard.writeText(code);
-    // You can add a toast notification here
+   
   };
 
   const isExpired = (expDate) => {
@@ -188,7 +188,7 @@ const Coupons = () => {
 
                 {/* Coupon Content */}
                 <div className="p-6">
-                  {/* Discount Amount */}
+                 
                   <div className="text-center mb-4">
                     <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-1">
                       ₹{coupon.discount}

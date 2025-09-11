@@ -22,7 +22,7 @@ const ProductCard = ({ products, orderTrack }) => {
 
   useEffect(() => {
     const fetchReviews = async () => {
-      const orderedProductIds = products.map((item) => item.product._id); // assuming your data shape
+      const orderedProductIds = products.map((item) => item.product._id); 
 
       const res = await axios.post(
         `${BASE_URL}/user-reviews`,
@@ -47,7 +47,7 @@ const ProductCard = ({ products, orderTrack }) => {
   }, []);
 
   const handleStarClick = async (productId, rating) => {
-    // If a rating exists and new rating is not greater, prevent update
+   
     if (
       submitted[productId] &&
       ratings[productId] !== undefined &&
@@ -66,7 +66,7 @@ const ProductCard = ({ products, orderTrack }) => {
       );
 
       if (response.data.status) {
-        // mark as submitted to prevent future duplicate lower posts
+       
         setSubmitted((prev) => ({ ...prev, [productId]: true }));
       } else {
         alert("Failed to submit review.");

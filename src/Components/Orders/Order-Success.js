@@ -12,7 +12,7 @@ const OrderConfirmation = ({ isCoupon, couponData }) => {
         setShowCoupon(true);
       }, 1000); 
 
-      return () => clearTimeout(timer); // clean up
+      return () => clearTimeout(timer); 
     }
   }, [isCoupon, couponData]);
 

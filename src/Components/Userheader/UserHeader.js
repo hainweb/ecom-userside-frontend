@@ -13,7 +13,6 @@ import {
   UserPlus,
 } from "lucide-react";
 import { Menu } from "@headlessui/react"; 
-import { ChevronDownIcon } from "@heroicons/react/20/solid"; 
 import { EllipsisVerticalIcon } from "@heroicons/react/20/solid"; 
 
 function UserHeader({ cartCount, user, darkMode, setDarkMode }) {
