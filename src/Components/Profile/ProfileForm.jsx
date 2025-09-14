@@ -49,7 +49,6 @@ const ProfileForm = ({ user }) => {
         setIsEditing(false);
       }
     } catch (error) {
-      console.error("Error updating profile:", error);
       alert("Failed to update profile. Please try again later.");
     }
 

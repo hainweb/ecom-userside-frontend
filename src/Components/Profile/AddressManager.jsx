@@ -38,7 +38,6 @@ const AddressManager = ({ view, setView, user }) => {
         setLoading(false);
       } catch (error) {
         setAddressLoading(false);
-        console.error("Error fetching addresses:", error);
         alert("Failed to fetch addresses. Please try again later.");
       }
       setLoading(false);
@@ -59,7 +58,6 @@ const AddressManager = ({ view, setView, user }) => {
           setAddresses(response.data.Address);
         }
       } catch (error) {
-        console.error("Error deleting address:", error);
         alert("Failed to delete address. Please try again later.");
       }
       setLoading(false);

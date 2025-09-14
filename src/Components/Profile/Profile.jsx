@@ -13,7 +13,6 @@ const ProfilePage = ({ user }) => {
   const location = useLocation();
   const [view, setView] = useState(location.state?.view || "profile");
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
-  console.log("eredd", user);
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col mt-2 items-center">
