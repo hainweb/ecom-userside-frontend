@@ -62,8 +62,6 @@ const ForgotPassword = ({ loginedUser }) => {
 
   const sendOtpToEmail = () => {
     setLoading(true);
-    // Add logic to send OTP
-    console.log("OTP sent to", user.Email);
     axios
       .post(`${BASE_URL}/forgot-send-otp`, user, { withCredentials: true })
       .then((response) => {
@@ -99,7 +97,6 @@ const ForgotPassword = ({ loginedUser }) => {
         ...user,
         forgot: true,
       });
-      console.log("rejndjnd", response);
 
       if (response.data.status) {
         setNotification({

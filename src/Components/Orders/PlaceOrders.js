@@ -102,7 +102,6 @@ const PlaceOrderForm = ({
         setCouponMessage(response.data.message || "Invalid coupon.");
       }
     } catch (error) {
-      console.error("Coupon error:", error);
       setCouponMessage("Error applying coupon.");
     } finally {
       setApplyingCoupon(false);
@@ -197,10 +196,8 @@ const PlaceOrderForm = ({
         rzp.open();
         rzp.on("payment.failed", function (response) {
           alert("Payment failed");
-          console.log(response.error);
         });
       } catch (error) {
-        console.error("Online payment error:", error);
         alert("Something went wrong");
       } finally {
         setLoading(false);

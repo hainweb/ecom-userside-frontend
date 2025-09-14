@@ -38,7 +38,7 @@ const OrderTracking = ({ orderTrack, setOrderTrack }) => {
       }
       setLoading(false);
     } catch (error) {
-      console.error("Error canceling order:", error);
+    
       alert("Failed to cancel the order");
     }
   };

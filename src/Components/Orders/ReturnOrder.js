@@ -78,8 +78,6 @@ const ReturnOrder = () => {
         } catch (error) {
             setError("Error returning the product: " + error);
         }
-
-        // Reset form
         setSelectedReason("");
         setMessage("");
         setError("");

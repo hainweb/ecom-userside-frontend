@@ -41,7 +41,7 @@ const Cart = ({ products = [], user, setCartCount }) => {
         setCartProducts(cartdata.data.products);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching cart data:', error);
+       
       }
     };
     fetchCartData();
