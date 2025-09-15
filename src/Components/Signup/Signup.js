@@ -2,16 +2,25 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../Urls/Urls";
-import { User, Lock, Phone, Mail, ShoppingCart, X, EyeOff, Eye, Loader2 } from "lucide-react";
+import {
+  User,
+  Lock,
+  Phone,
+  Mail,
+  ShoppingCart,
+  X,
+  EyeOff,
+  Eye,
+  Loader2,
+} from "lucide-react";
 
 const Signup = ({ setUser, setCartCount }) => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
-
     Name: "",
-    Name: "", 
+    Name: "",
     LastName: "",
     Gender: "",
     Email: "",
@@ -23,7 +32,11 @@ const Signup = ({ setUser, setCartCount }) => {
   const [otp, setOtp] = useState("");
   const [info, setInfo] = useState("");
   const [resendCooldown, setResendCooldown] = useState(0);
-  const [notification, setNotification] = useState({ show: false, message: "", type: "" });
+  const [notification, setNotification] = useState({
+    show: false,
+    message: "",
+    type: "",
+  });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,7 +49,6 @@ const Signup = ({ setUser, setCartCount }) => {
     return () => clearInterval(timer);
   }, [resendCooldown]);
 
-  
   const showNotification = (message, type = "success") => {
     setNotification({ show: true, message, type });
     setTimeout(() => {
@@ -44,7 +56,6 @@ const Signup = ({ setUser, setCartCount }) => {
     }, 300000);
   };
 
-  
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -105,8 +116,7 @@ const Signup = ({ setUser, setCartCount }) => {
     try {
       setLoading(true);
       const response = await axios.post(`${BASE_URL}/send-otp`, formData);
-      console.log('response snd sms',response);
-      
+
       if (response.data.status) {
         setStep(3);
         showNotification(`OTP sent successfully to ${formData.Email}`);
@@ -125,12 +135,16 @@ const Signup = ({ setUser, setCartCount }) => {
     try {
       setLoading(true);
       const response = await axios.post(`${BASE_URL}/send-otp`, formData);
-      console.log('rejndjnd', response);
+
       if (response.data.status) {
         showNotification(`OTP resent successfully to ${formData.Email}`);
         setResendCooldown(6);
       } else {
-        setNotification({ show: true, message: response.data.message, type: "error" });
+        setNotification({
+          show: true,
+          message: response.data.message,
+          type: "error",
+        });
 
         setInfo(response.data.message || "Error resending OTP.");
       }
@@ -151,30 +165,40 @@ const Signup = ({ setUser, setCartCount }) => {
 
     try {
       setLoading(true);
-      const response = await axios.post(`${BASE_URL}/verify-otp`, { otp, ...formData },   {withCredentials:true});
-      console.log('rejndjnd', response);
+      const response = await axios.post(
+        `${BASE_URL}/verify-otp`,
+        { otp, ...formData },
+        { withCredentials: true }
+      );
 
       if (response.data.status) {
-        setNotification({ show: true, message: "Otp Verified Successfully!", type: "success" });
+        setNotification({
+          show: true,
+          message: "Otp Verified Successfully!",
+          type: "success",
+        });
 
         setTimeout(() => {
           setUser(response.data.user);
           setCartCount(0);
           navigate("/");
-        }, 1500); 
+        }, 1500);
       } else {
-       
-        setNotification({ show: true, message: response.data.message, type: "error" });
+        setNotification({
+          show: true,
+          message: response.data.message,
+          type: "error",
+        });
 
-
-        setOtp(""); 
+        setOtp("");
       }
     } catch (error) {
       showNotification(
-        error.response?.data?.message || "Something went wrong. Please try again.",
+        error.response?.data?.message ||
+          "Something went wrong. Please try again.",
         "error"
       );
-      setOtp(""); 
+      setOtp("");
     } finally {
       setLoading(false);
     }
@@ -189,34 +213,56 @@ const Signup = ({ setUser, setCartCount }) => {
             <div className="flex-1 w-0 p-4">
               <div className="flex items-start">
                 <div className="flex-shrink-0">
-                  {notification.type === 'success' ? (
+                  {notification.type === "success" ? (
                     <div className="h-6 w-6 text-green-500 animate-bounce">
                       {/* Success SVG */}
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
                       </svg>
                     </div>
                   ) : (
                     <div className="h-6 w-6 text-blue-400 animate-pulse">
                       {/* Info SVG */}
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
                       </svg>
                     </div>
                   )}
                 </div>
                 <div
-                  className={`${notification.type === "error" ? "text-red-400" : "text-green-300"
-                    } ml-2`}
+                  className={`${
+                    notification.type === "error"
+                      ? "text-red-400"
+                      : "text-green-300"
+                  } ml-2`}
                 >
                   {notification.message}
                 </div>
-
               </div>
             </div>
             <div className="flex border-l border-gray-200 dark:border-gray-700">
               <button
-                onClick={() => setNotification({ show: false, message: "", type: "" })}
+                onClick={() =>
+                  setNotification({ show: false, message: "", type: "" })
+                }
                 className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 transition-colors duration-200"
               >
                 <svg
@@ -238,19 +284,22 @@ const Signup = ({ setUser, setCartCount }) => {
         </div>
       )}
 
-
       <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg max-w-sm w-full p-6 z-10">
         <div className="text-center mb-6">
           <ShoppingCart className="w-12 h-12 text-blue-500 mx-auto animate-pulse" />
           <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
-            {step === 1 ? "Basic Info" : step === 2 ? "Contact Info" : "Verify OTP"}
+            {step === 1
+              ? "Basic Info"
+              : step === 2
+              ? "Contact Info"
+              : "Verify OTP"}
           </h2>
           <p className="text-sm text-gray-500 dark:text-gray-400">
             {step === 1
               ? "Enter your basic information"
               : step === 2
-                ? "Complete your registration"
-                : "Enter the OTP sent to your email"}
+              ? "Complete your registration"
+              : "Enter the OTP sent to your email"}
           </p>
         </div>
 
@@ -280,7 +329,9 @@ const Signup = ({ setUser, setCartCount }) => {
               />
             </div>
             <div>
-              <label className="block mb-2 text-sm font-semibold text-gray-700 dark:text-gray-300">Gender</label>
+              <label className="block mb-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                Gender
+              </label>
               <div className="flex gap-4">
                 <label className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
                   <input
@@ -390,16 +441,22 @@ const Signup = ({ setUser, setCartCount }) => {
               type="submit"
               className="w-full py-2 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600 transition duration-200"
             >
-              {loading ? <div className="flex justify-center items-center">
-                <Loader2 className="w-4 h-4 animate-spin dark:text-white" />
-              </div> : "Send OTP"}
+              {loading ? (
+                <div className="flex justify-center items-center">
+                  <Loader2 className="w-4 h-4 animate-spin dark:text-white" />
+                </div>
+              ) : (
+                "Send OTP"
+              )}
             </button>
           </form>
         )}
 
         {step === 3 && (
           <form onSubmit={handleVerifyOtp} className="space-y-4">
-            <p className="text-gray-700 dark:text-gray-300">OTP has been sent to {formData.Email}</p>
+            <p className="text-gray-700 dark:text-gray-300">
+              OTP has been sent to {formData.Email}
+            </p>
             <div className="relative">
               <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               <input
@@ -415,18 +472,23 @@ const Signup = ({ setUser, setCartCount }) => {
               type="submit"
               className="w-full py-2 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600 transition duration-200"
             >
-              {loading ? <div className="flex justify-center items-center">
-                <Loader2 className="w-4 h-4 animate-spin dark:text-white" />
-              </div> : "Verify OTP"}
+              {loading ? (
+                <div className="flex justify-center items-center">
+                  <Loader2 className="w-4 h-4 animate-spin dark:text-white" />
+                </div>
+              ) : (
+                "Verify OTP"
+              )}
             </button>
             <button
               type="button"
               onClick={handleResendOtp}
               disabled={resendCooldown > 0}
-              className={`w-full py-2 mt-2 ${resendCooldown > 0
-                ? "bg-gray-400 dark:bg-gray-600 cursor-not-allowed"
-                : "bg-blue-500 hover:bg-blue-600"
-                } text-white rounded-lg font-bold transition duration-200`}
+              className={`w-full py-2 mt-2 ${
+                resendCooldown > 0
+                  ? "bg-gray-400 dark:bg-gray-600 cursor-not-allowed"
+                  : "bg-blue-500 hover:bg-blue-600"
+              } text-white rounded-lg font-bold transition duration-200`}
             >
               {resendCooldown > 0
                 ? `Resend OTP in ${resendCooldown}s`

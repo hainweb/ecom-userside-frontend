@@ -17,7 +17,6 @@ function ExploreMore({ searchQuery }) {
           withCredentials: true,
         });
         let data = response.data.products;
-        console.log("Fetched products:", response);
 
         data = data.sort(() => Math.random() - 0.5);
         setAllProducts(data); 

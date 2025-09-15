@@ -48,7 +48,7 @@ const ProductAndCategoryList = ({ setCartCount, user, setUser }) => {
         const response = await axios.get(`${BASE_URL}/suggested-products`, {
           withCredentials: true,
         });
-        console.log("suggested products", response.data);
+       
         setSuggestedProducts(response.data);
       } catch (error) {
         console.error(error);
@@ -88,7 +88,7 @@ const ProductAndCategoryList = ({ setCartCount, user, setUser }) => {
             withCredentials: true,
           })
           .then((response) => {
-            console.log("res wish", response);
+          
 
             if (response.data.status) {
               setSuggestedProducts((prevProducts) =>

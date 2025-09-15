@@ -15,8 +15,6 @@ import {
   Truck,
   ChevronLeft,
   ChevronRight,
-  Sun,
-  Moon,
   Star,
   Package,
   RefreshCw,
@@ -44,7 +42,7 @@ const ProductDisplay = ({ setCartCount }) => {
           withCredentials: true,
         });
         setProduct(response.data);
-        console.log("product", product);
+      
 
         if (response.data.CustomOptions?.length) {
           setSelectedOption(response.data.CustomOptions[0].value);
@@ -84,7 +82,7 @@ const ProductDisplay = ({ setCartCount }) => {
     axios
       .get(`${BASE_URL}/add-to-cart/${productId}`, { withCredentials: true })
       .then((response) => {
-        console.log("resokdjd", response);
+       
 
         if (response.data.status) {
           setCartCount((prevCount) => prevCount + 1);
@@ -109,7 +107,7 @@ const ProductDisplay = ({ setCartCount }) => {
         withCredentials: true,
       })
       .then((response) => {
-        console.log("res wish", response);
+      
         if (!response.data.status) {
          
           setIsWishlisted(!newWishlistedState);
@@ -162,7 +160,7 @@ const ProductDisplay = ({ setCartCount }) => {
           text: "Check out this page!",
           url: window.location.href,
         });
-        console.log("Content shared successfully");
+      
       } catch (error) {
         console.error("Error sharing:", error);
       }
