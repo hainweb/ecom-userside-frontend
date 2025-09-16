@@ -9,8 +9,7 @@ export const generateInvoice = (orderTrack, products, companyInfo = {}) => {
       alert("No order data available");
       return;
     }
-    console.log("Order track is", orderTrack);
-    console.log("Order is", order);
+ 
 
     const formatDate = (str) => {
       if (!str) return "N/A";
@@ -18,7 +17,7 @@ export const generateInvoice = (orderTrack, products, companyInfo = {}) => {
       const normalized = str.replace(/\sat\s/, " ");
       const parsed = Date.parse(normalized);
       if (isNaN(parsed)) {
-        console.warn("formatDate: could not parse", str);
+       
         return "Invalid Date";
       }
       return new Date(parsed).toLocaleDateString("en-IN", {

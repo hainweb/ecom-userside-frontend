@@ -61,7 +61,6 @@ function App() {
         const response = await axios.get(`${BASE_URL}/home`, {
           withCredentials: true,
         });
-        console.log("response", response);
 
         setCartCount(response.data.cartCount);
         setUser(response.data.user);
