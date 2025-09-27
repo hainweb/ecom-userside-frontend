@@ -48,7 +48,7 @@ const ProductAndCategoryList = ({ setCartCount, user, setUser }) => {
         const response = await axios.get(`${BASE_URL}/suggested-products`, {
           withCredentials: true,
         });
-       
+
         setSuggestedProducts(response.data);
       } catch (error) {
         console.error(error);
@@ -88,8 +88,6 @@ const ProductAndCategoryList = ({ setCartCount, user, setUser }) => {
             withCredentials: true,
           })
           .then((response) => {
-          
-
             if (response.data.status) {
               setSuggestedProducts((prevProducts) =>
                 prevProducts.map((product) =>
@@ -339,7 +337,7 @@ const ProductAndCategoryList = ({ setCartCount, user, setUser }) => {
               <div className="md:hidden grid grid-cols-2 gap-4">
                 {suggestedProducts.map((product) => (
                   <div
-                    className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl"
+                    className="flex flex-col h-full bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl"
                     key={product._id}
                   >
                     <Link to={`/product/${product._id}`}>
@@ -399,7 +397,7 @@ const ProductAndCategoryList = ({ setCartCount, user, setUser }) => {
                         </div>
                       </div>
                     </Link>
-                    <div className="px-3 pb-3">
+                    <div className="px-3 pb-3 mt-auto">
                       {product.Quantity > 0 ? (
                         <button
                           onClick={() => addToCart(product._id)}
