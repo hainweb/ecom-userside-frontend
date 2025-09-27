@@ -241,7 +241,7 @@ function UserHeader({ cartCount, user, darkMode, setDarkMode }) {
 
       {/* Overlays */}
       <div className="fixed top-18 left-0 w-full h-8 bg-transparent dark:bg-gradient-to-b dark:from-gray-900 dark:to-transparent pointer-events-none z-50"></div>
-      <div className="fixed bottom-16 mb-2 sm:mb-0 md:mb-0 left-0 w-full h-6 bg-gradient-to-b from-transparent to-white dark:from-transparent dark:to-gray-900 pointer-events-none z-50 sm:bottom-0"></div>
+      <div className="fixed bottom-16 mb-2 sm:mb-0 md:mb-0 left-0 w-full h-6 bg-gradient-to-b from-transparent  dark:from-transparent dark:to-gray-900 pointer-events-none z-50 sm:bottom-0"></div>
 
       {/* Bottom navigation for mobile view */}
       <nav
