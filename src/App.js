@@ -58,6 +58,10 @@ function App() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
+        axios.post(process.env.REACT_APP_ANALYTICS_URL, {
+          platform: "kingcart",
+        });
+
         const response = await axios.get(`${BASE_URL}/home`, {
           withCredentials: true,
         });

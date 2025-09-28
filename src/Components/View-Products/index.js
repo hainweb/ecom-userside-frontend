@@ -9,6 +9,7 @@ import ExploreMore from "./ExploreMore";
 import Footer from "../Footer/Footer";
 
 import LoginModal from "../Auth/LoginModel";
+import BecomeMerchant from "../BecomeSeller/BecomeMerchant";
 
 const ProductAndCategoryList = ({ setCartCount, user, setUser }) => {
   const [suggestedProducts, setSuggestedProducts] = useState([]);
@@ -455,6 +456,8 @@ const ProductAndCategoryList = ({ setCartCount, user, setUser }) => {
           <ExploreMore searchQuery={searchQuery} />
         </div>
       </section>
+
+      <BecomeMerchant/>
 
       <Footer />
 
