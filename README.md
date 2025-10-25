@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+# User Frontend | Multi-Role E-Commerce Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains the **User Panel Frontend** for the **Multi-Role E-Commerce Platform** built using the **MERN Stack**.  
+It provides a seamless shopping experience with advanced product discovery, category-based browsing, real-time order tracking, and user reviews — all wrapped in a modern, responsive interface.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+### Authentication
+- OTP-based signup and password reset via email  
+- Secure login using **JWT** and **Express Session**  
+- Persistent session management for smooth UX  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### User Experience
+- **Dynamic Homepage**
+  - Auto-updating banners and category sliders (managed by Super Admin)
+  - Each category navigates dynamically to its dedicated page  
+- Fully responsive design using **TailwindCSS**
+- Dark/Light mode toggle for accessibility and customization  
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Shopping & Product Discovery
 
-### `npm run build`
+- **Advanced Product Discovery Page**
+  - Powerful **search**, **filter**, and **sorting** options (price, rating, popularity, etc.)
+  - Pagination and lazy loading for smooth browsing  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Category-based Product View**
+  - Clickable category and offer slider that dynamically loads respective product listings
+  - **Detailed Product Pages**: Clicking a product opens a complete product detail page
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **User Reviews & Ratings**
+  - Users can review and rate products only after purchase  
+  - Reviews displayed on product detail pages  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+### Cart, Wishlist & Checkout
+- Add, remove, and manage items in **Cart** and **Wishlist** seamlessly
+- **Real-time stock updates**: incrementing/decrementing cart items instantly adjusts available stock
+- **Auto-generated coupons** based on Super Admin rules
+- Integrated **Razorpay** payment gateway for secure transactions
+- Download **PDF invoices** after order completion  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Order Management
+- Real-time **order tracking** and status updates  
+- Options for **order cancellation** and **product returns**
+- Delivery updates fetched dynamically from the delivery panel  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Profile Management
+- Edit personal information and profile picture  
+- Manage multiple **delivery addresses**  
+- View **order history** and product reviews  
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Tech Stack
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| Category | Technology |
+|-----------|-------------|
+| **Frontend Framework** | React.js |
+| **State Management** | Context API, Local state |
+| **Styling** | TailwindCSS |
+| **Routing** | React Router DOM |
+| **API Communication** | Axios |
+| **Payments** | Razorpay Integration |
+| **Authentication** | Express Session |
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## Environment Variables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Create a `.env` file in the **root directory** of the project with the following variables:
 
-### Making a Progressive Web App
+```env
+# Base URL of your backend API
+# Use full URL in development (e.g., localhost), and '/api' in production
+# Example for development:
+REACT_APP_BASE_URL=http://localhost:5000/api
+# Example for production:
+# REACT_APP_BASE_URL=/api
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# Analytics API endpoint
+REACT_APP_ANALYTICS_URL=https://hain-analytics-backend.onrender.com/api/analytics/log
 
-### Advanced Configuration
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## Setup Instructions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+# Clone the repository
+git clone https://github.com/hainweb/ecom-userside-frontend.git
 
-### `npm run build` fails to minify
+# Navigate to project directory
+cd ecom-userside-frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Install dependencies
+npm install
+
+# Start the development server
+npm start
